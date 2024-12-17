@@ -1,0 +1,118 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+.header {
+  width: 100%;
+  background-color: black;
+  padding: 10px 0;
+  height: 60px; 
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  width: 100%;
+  margin-top: 1px;
+}
+
+
+.nav-links-left, .nav-links-right {
+  display: flex;
+  gap: 10px; 
+}
+
+.nav-links-left a {
+  margin-left: 30px; 
+}
+
+.nav-links-right a {
+  margin-right: 30px; 
+}
+.nav-link {
+  color: white; 
+  text-decoration: none; 
+  font-size: 18px;
+  padding: 10px;
+}
+
+.nav-link:hover {
+  text-decoration: underline; 
+}
+
+
+.logo {
+  flex: 1;
+  text-align: center;
+}
+
+.logo img {
+  width: 100px; 
+  height: auto; 
+}
+.main-img {
+  display: flex;
+  justify-content: center; /* Center the image horizontally */
+  align-items: center; /* Center the image vertically */
+  background-color: black;
+  height: 500px;
+  margin-top: 20px; /* Adds space between header and main image */
+  position: relative;
+  overflow: hidden; /* Prevents overflow if image moves */
+}
+
+.dirt {
+  width: 400px; /* Increase the size of the dirt image */
+  height: auto;
+  transition: transform 0.3s ease-in-out; /* Smooth transition for shake */
+  margin-top: 20px; /* Adds margin on top */
+  position: relative;
+}
+
+/* Adding the yellow glow effect for the bike's front light */
+.dirt::before {
+  content: '';
+  position: absolute;
+  top: 20%; /* Adjust based on where the bike's front light is (fine-tune this) */
+  left: 90%; /* Adjust based on the bike's position */
+  width: 30px;  /* Adjust width for the light size */
+  height: 30px; /* Adjust height for the light size */
+  background-color: yellow;
+  border-radius: 50%; /* Makes it round */
+  opacity: 0; /* Initially hidden */
+  transition: opacity 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Shake effect on hover and front light glow */
+.dirt:hover {
+  animation: shake 0.5s ease-in-out; /* Shake animation */
+}
+
+/* When the image is hovered, show the glow effect */
+.dirt:hover::before {
+  opacity: 1; /* Make the front light glow appear */
+  box-shadow: 0 0 20px 10px yellow; /* Enhance glow */
+}
+
+/* Keyframes for shake effect (bike shaking) */
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-15px);
+  }
+  50% {
+    transform: translateX(15px);
+  }
+  75% {
+    transform: translateX(-15px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
