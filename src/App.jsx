@@ -3,6 +3,7 @@ import './App.css'
 import dirt from '../src/assets/dirt.png'
 import Footer from './Components/footer'
 import Advartisingpage from './Components/advartisingpage'
+import Singlemoto from './Components/singlemoto'
 
 function App() {
   
@@ -27,7 +28,16 @@ function App() {
       <div className="main-img">
         <img className="dirt" src={dirt} alt="Dirt Image" />
       </div>
-    <div></div>
+    <div>
+      <Advartisingpage/>
+      <div>
+        <Singlemoto/>
+      </div>
+      <div>
+        <Footer/>
+      </div>
+
+    </div>
     </>
   )
 }

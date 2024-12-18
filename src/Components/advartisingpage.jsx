@@ -1,15 +1,18 @@
 import { useEffect, useState } from "react";
-
-
+import singlebike from '../assets/singlebike.jpg';
+import singlemoto from '../assets/singlemoto.jpg';
+import singlemoto1 from '../assets/singlemoto1.jpg';
 
 function Advartisingpage() {
-    const [image, setImage] = useState(0);
+  const [imageIndex, setImageIndex] = useState(0);
 
   useEffect(() => {
+    // Set interval to change the image every 3 seconds
     const interval = setInterval(() => {
-      setImage((prevImage) => (prevImage + 1) % 4);
+      setImageIndex((prevIndex) => (prevIndex + 1) % 3); // Only cycle through 3 images (0 to 2)
     }, 3000);
 
+    // Cleanup the interval on component unmount
     return () => clearInterval(interval);
   }, []);
 
@@ -17,44 +20,51 @@ function Advartisingpage() {
     {
       text: 'Welcome to School',
       description: 'This is your first step towards learning.',
-      img: 'https://via.placeholder.com/400x300/ffcc00',
+      img: singlebike
     },
     {
       text: 'Top Students of the Year',
       description: 'Congratulations to the top students for their amazing performance!',
-      img: 'https://via.placeholder.com/400x300/00ccff',
+      img: singlemoto
     },
     {
       text: 'Graduation Day',
       description: 'Celebrating the journey from learning to achievement.',
-      img: 'https://via.placeholder.com/400x300/ff5733',
+      img: singlemoto1
     },
-    {
-      text: 'Future Leaders',
-      description: 'The future is bright with these outstanding leaders.',
-      img: 'https://via.placeholder.com/400x300/33cc33',
-    }
   ];
 
-  return (
+  const currentImage = imageDetails[imageIndex];
 
-  
+  return (
     <div className="container">
       <div className="text-box">
-        <h1>{imageDetails[image].text}</h1>
-        <p>{imageDetails[image].description}</p>
+        {/* Ensure currentImage exists before trying to render */}
+        {currentImage ? (
+          <>
+            <h1>{currentImage.text}</h1>
+            <div className="border"></div>
+            <p>{currentImage.description}</p>
+            <button>Get Started</button>
+          </>
+        ) : (
+          <p>Loading...</p>
+        )}
       </div>
+
       <div className="image-box">
-        <img
-          src={imageDetails[image].img}
-          alt={imageDetails[image].text}
-        />
+        {/* Ensure the image source is valid before rendering */}
+        {currentImage ? (
+          <img
+            src={currentImage.img}
+            alt={currentImage.text}
+          />
+        ) : (
+          <p>Loading image...</p>
+        )}
       </div>
-    
-  
-      
     </div>
-  )
+  );
 }
 
-export default Advartisingpage
+export default Advartisingpage;
