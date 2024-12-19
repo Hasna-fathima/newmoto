@@ -4,6 +4,7 @@ import dirt from '../src/assets/dirt.png'
 import Footer from './Components/footer'
 import Advartisingpage from './Components/advartisingpage'
 import Singlemoto from './Components/singlemoto'
+import Rowpost from './Components/Rowpost'
 
 function App() {
   
@@ -30,6 +31,9 @@ function App() {
       </div>
     <div>
       <Advartisingpage/>
+      <div>
+        <Rowpost/>
+        </div>
       <div>
         <Singlemoto/>
       </div>
